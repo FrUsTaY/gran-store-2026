@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ГРАНЬ - Серебро, сделанное руками</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        graphite: {
+                            DEFAULT: '#1c1c1e', // Dark background
+                            light: '#2c2c2e',  // Card background
+                            dark: '#111111'
+                        },
+                        metallic: {
+                            DEFAULT: '#c59b76', // Warm metallic accent
+                            hover: '#d8b292'
+                        },
+                        text: {
+                            DEFAULT: '#e5e5e7',
+                            muted: '#9a9a9c'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    aspectRatio: {
+                        '7/2': '7 / 2',
+                        '7/3': '7 / 3',
+                        '5/1': '5 / 1',
+                        '5/2': '5 / 2',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.graphite.DEFAULT');
+            color: theme('colors.text.DEFAULT');
+            /* Adding a subtle texture effect */
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20zM20 0h20v20H20V0z' fill='%232a2a2c' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Utility for hiding scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-metallic selection:text-graphite-dark flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="w-full bg-graphite/95 backdrop-blur-md sticky top-0 z-50 border-b border-graphite-light">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+            <!-- Mobile Burger -->
+            <button id="mobile-menu-btn" class="md:hidden text-text hover:text-metallic transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+            <!-- Desktop Nav (Left) -->
+            <nav class="hidden md:flex gap-8 items-center text-sm uppercase tracking-widest font-medium">
+                <a href="#catalog" class="hover:text-metallic transition-colors">Каталог</a>
+                <a href="#about" class="hover:text-metallic transition-colors">О мастерской</a>
+                <a href="#custom" class="hover:text-metallic transition-colors">На заказ</a>
+            </nav>
+
+            <!-- Logo -->
+            <a href="#" class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center group">
+                <span class="font-serif text-3xl font-bold tracking-widest text-text group-hover:text-metallic transition-colors">ГРАНЬ</span>
+                <span class="text-[10px] uppercase tracking-[0.2em] text-text-muted hidden md:block">Серебро, сделанное руками</span>
+            </a>
+
+            <!-- Right Icons -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <!-- Search -->
+                <button class="text-text hover:text-metallic transition-colors hidden md:block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                <!-- Profile -->
+                <a href="#login" class="text-text hover:text-metallic transition-colors hidden md:block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </a>
+                <!-- Cart -->
+                <a href="#cart" class="text-text hover:text-metallic transition-colors relative">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span class="absolute -top-1.5 -right-1.5 bg-metallic text-graphite-dark text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">2</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-graphite-light border-b border-graphite-light absolute w-full left-0 top-20 shadow-xl overflow-hidden transition-all duration-300 max-h-0">
+            <div class="px-4 py-6 flex flex-col gap-4 text-center text-sm uppercase tracking-widest">
+                <a href="#catalog" class="mobile-link text-text hover:text-metallic py-2 border-b border-graphite">Каталог</a>
+                <a href="#about" class="mobile-link text-text hover:text-metallic py-2 border-b border-graphite">О мастерской</a>
+                <a href="#custom" class="mobile-link text-text hover:text-metallic py-2 border-b border-graphite">На заказ</a>
+                <a href="#login" class="mobile-link text-text hover:text-metallic py-2">Личный кабинет</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow">
+
+        <!-- SLIDESHOW #1 (7:2 Desktop, 7:3 Mobile) -->
+        <section class="w-full relative overflow-hidden" id="hero-slider">
+            <div class="slider-track flex transition-transform duration-700 ease-in-out h-full">
+                <!-- Slide 1 -->
+                <div class="slide min-w-full relative aspect-7/3 md:aspect-7/2">
+                    <!-- Placeholder: Dark metal/workshop texture with ring -->
+                    <img src="https://picsum.photos/1920/548?random=1" alt="Серебро, сделанное руками" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-r from-graphite-dark/80 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 max-w-[1440px] mx-auto w-full">
+                        <h1 class="font-serif text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 drop-shadow-md">Серебро,<br>сделанное руками</h1>
+                        <p class="text-sm md:text-lg text-text-muted mb-8 max-w-md drop-shadow">Каждое кольцо — уникально. Мы создаем украшения с душой, фактурой и характером.</p>
+                        <a href="#catalog" class="inline-block bg-metallic text-graphite-dark px-6 py-3 font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-metallic-hover transition-colors w-max">Смотреть каталог</a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide min-w-full relative aspect-7/3 md:aspect-7/2">
+                    <!-- Placeholder: Hands working on silver -->
+                    <img src="https://picsum.photos/1920/548?random=2" alt="Индивидуальный заказ" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 bg-gradient-to-r from-graphite-dark/80 to-transparent"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-32 max-w-[1440px] mx-auto w-full">
+                        <h1 class="font-serif text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 drop-shadow-md">Ваша идея,<br>наше воплощение</h1>
+                        <p class="text-sm md:text-lg text-text-muted mb-8 max-w-md drop-shadow">Изготовим кольцо по вашему эскизу. Подберем размер, добавим гравировку.</p>
+                        <a href="#custom" class="inline-block border border-metallic text-metallic px-6 py-3 font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-metallic hover:text-graphite-dark transition-colors w-max">Заказать индивидуально</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <button class="slider-prev absolute left-2 md:left-8 top-1/2 -translate-y-1/2 bg-graphite-dark/50 hover:bg-metallic text-white hover:text-graphite-dark p-2 rounded-full backdrop-blur-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button class="slider-next absolute right-2 md:right-8 top-1/2 -translate-y-1/2 bg-graphite-dark/50 hover:bg-metallic text-white hover:text-graphite-dark p-2 rounded-full backdrop-blur-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+            <!-- Slider Dots -->
+            <div class="slider-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <!-- Dots generated by JS -->
+            </div>
+        </section>
+
+        <!-- CATEGORIES #1 (Styles) -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-2">Выбери свой стиль</h2>
+                <div class="h-0.5 w-16 bg-metallic mx-auto md:mx-0"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- Category 1 -->
+                <a href="#grunge" class="group relative block aspect-square overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/400?random=5" alt="Гранж" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-graphite-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Гранж</h3>
+                    </div>
+                </a>
+                <!-- Category 2 -->
+                <a href="#gothic" class="group relative block aspect-square overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/400?random=6" alt="Готика" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-graphite-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Готика</h3>
+                    </div>
+                </a>
+                <!-- Category 3 -->
+                <a href="#cute" class="group relative block aspect-square overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/400?random=7" alt="Милые" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-graphite-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Милые</h3>
+                    </div>
+                </a>
+                <!-- Category 4 -->
+                <a href="#abstract" class="group relative block aspect-square overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/400?random=8" alt="Абстрактные" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-graphite-dark/20 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-xl md:text-2xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Абстрактные</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- PRODUCTS #1 (Popular/New) -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24" id="catalog">
+            <div class="mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-2">Новинки мастерской</h2>
+                    <div class="h-0.5 w-16 bg-metallic mx-auto md:mx-0"></div>
+                </div>
+                <a href="#all-products" class="text-text hover:text-metallic transition-colors text-sm font-medium uppercase tracking-widest flex items-center gap-2 mx-auto md:mx-0">
+                    Смотреть все
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+
+            <!-- Grid: 2 mobile, 3 tablet, 6 desktop -->
+            <div class="grid grid-cols-2 lg:grid-cols-6 gap-x-4 gap-y-8 md:gap-6">
+                <!-- Product 1 -->
+                <div class="group flex flex-col">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=13" alt="Кольцо Шип" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-2 left-2 bg-white text-graphite-dark text-[10px] uppercase font-bold px-2 py-1 tracking-wider">Новинка</div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Кольцо "Шип"</a>
+                    <p class="text-text-muted text-xs mb-2">Гранж, серебро 925</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">4 500 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="group flex flex-col">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=14" alt="Грань Тень" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-2 left-2 bg-metallic text-graphite-dark text-[10px] uppercase font-bold px-2 py-1 tracking-wider">Хит</div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Грань "Тень"</a>
+                    <p class="text-text-muted text-xs mb-2">Минимализм, фактура</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">3 900 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="group flex flex-col hidden md:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=15" alt="Волна 925" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Волна 925</a>
+                    <p class="text-text-muted text-xs mb-2">Абстракция, серебро</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">5 200 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="group flex flex-col hidden md:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=16" alt="Капля серебра" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-2 left-2 bg-graphite-dark text-white text-[10px] border border-white/20 uppercase font-bold px-2 py-1 tracking-wider">-10%</div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Капля серебра</a>
+                    <p class="text-text-muted text-xs mb-2">Милые, с фианитом</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <div class="flex gap-2 items-center">
+                            <span class="font-serif text-lg text-white">4 100 ₽</span>
+                            <span class="text-text-muted text-xs line-through">4 550 ₽</span>
+                        </div>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="group flex flex-col hidden lg:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=17" alt="Лунная пыль" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Лунная пыль</a>
+                    <p class="text-text-muted text-xs mb-2">Матовая фактура</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">6 800 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="group flex flex-col hidden lg:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=18" alt="Кольцо Вечность" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Кольцо "Вечность"</a>
+                    <p class="text-text-muted text-xs mb-2">Готика, оксидирование</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">8 200 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile "View All" Button -->
+            <div class="mt-8 text-center md:hidden">
+                <a href="#all-products" class="inline-block border border-metallic text-metallic px-6 py-3 font-semibold uppercase tracking-wider text-xs hover:bg-metallic hover:text-graphite-dark transition-colors w-full">Смотреть все новинки</a>
+            </div>
+        </section>
+
+        <!-- PROMO BLOCK -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24" id="about">
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative aspect-square md:aspect-[4/3] bg-graphite-light overflow-hidden">
+                        <img src="https://picsum.photos/800/600?random=25" alt="Наша мастерская" class="absolute inset-0 w-full h-full object-cover opacity-80">
+                        <div class="absolute inset-0 border border-metallic/30 m-4 md:m-6"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 flex flex-col justify-center">
+                    <h2 class="font-serif text-3xl md:text-5xl font-bold text-white mb-6">Мастерская,<br>где рождается<br>искусство</h2>
+                    <div class="h-0.5 w-16 bg-metallic mb-6"></div>
+                    <p class="text-text-muted text-sm md:text-base leading-relaxed mb-6">
+                        Мы – маленькая мастерская, где каждое кольцо рождается вручную. Льём, куём, шлифуем – и вкладываем душу.
+                        Никакого конвейера, только индивидуальный подход и любовь к своему делу.
+                    </p>
+                    <p class="text-text-muted text-sm md:text-base leading-relaxed mb-8">
+                        У нас не бывает двух абсолютно одинаковых изделий. Фактура, чернение, игра света на гранях делают каждое украшение по-настоящему уникальным, как и его владелец.
+                    </p>
+                    <a href="#about-more" class="inline-block border border-metallic text-metallic px-8 py-3 font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-metallic hover:text-graphite-dark transition-colors w-max">Читать нашу историю</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDESHOW #2 (5:1 Desktop, 5:2 Mobile) -->
+        <section class="w-full relative overflow-hidden mt-16 md:mt-24" id="process-slider">
+            <div class="slider-track flex transition-transform duration-700 ease-in-out h-full">
+                <!-- Slide 1 -->
+                <div class="slide min-w-full relative aspect-5/2 md:aspect-5/1">
+                    <img src="https://picsum.photos/1920/384?random=3" alt="История в деталях" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                    <div class="absolute inset-0 bg-graphite-dark/40"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+                        <h2 class="font-serif text-2xl md:text-4xl font-bold text-white mb-2 tracking-wide">История в деталях</h2>
+                        <p class="text-sm md:text-base text-text-muted">Никакого конвейера. Льём, куём, шлифуем вручную.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide min-w-full relative aspect-5/2 md:aspect-5/1">
+                    <img src="https://picsum.photos/1920/384?random=4" alt="Гарантия качества" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                    <div class="absolute inset-0 bg-graphite-dark/40"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+                        <h2 class="font-serif text-2xl md:text-4xl font-bold text-white mb-2 tracking-wide">Гарантия качества</h2>
+                        <p class="text-sm md:text-base text-text-muted">Используем только настоящее серебро 925 пробы.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Slider Controls -->
+            <button class="slider-prev absolute left-2 md:left-8 top-1/2 -translate-y-1/2 bg-graphite-dark/50 hover:bg-metallic text-white hover:text-graphite-dark p-2 rounded-full backdrop-blur-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+            </button>
+            <button class="slider-next absolute right-2 md:right-8 top-1/2 -translate-y-1/2 bg-graphite-dark/50 hover:bg-metallic text-white hover:text-graphite-dark p-2 rounded-full backdrop-blur-sm transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+            </button>
+        </section>
+
+        <!-- CATEGORIES #2 (Collections) -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div class="mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-2">Коллекции</h2>
+                    <div class="h-0.5 w-16 bg-metallic mx-auto md:mx-0"></div>
+                </div>
+                <a href="#collections" class="text-text hover:text-metallic transition-colors text-sm font-medium uppercase tracking-widest">Все коллекции</a>
+            </div>
+
+            <!-- Mobile: 2 cols, Desktop: 4 cols -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- Collection 1 -->
+                <a href="#gift" class="group relative block aspect-[3/4] overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/533?random=9" alt="Подарочные" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-lg md:text-xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Подарочные</h3>
+                    </div>
+                </a>
+                <!-- Collection 2 -->
+                <a href="#engraved" class="group relative block aspect-[3/4] overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/533?random=10" alt="С гравировкой" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-lg md:text-xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">С гравировкой</h3>
+                    </div>
+                </a>
+                <!-- Collection 3 -->
+                <a href="#hits" class="group relative block aspect-[3/4] overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/533?random=11" alt="Хиты" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-lg md:text-xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Хиты</h3>
+                    </div>
+                </a>
+                <!-- Collection 4 -->
+                <a href="#exclusive" class="group relative block aspect-[3/4] overflow-hidden bg-graphite-light">
+                    <img src="https://picsum.photos/400/533?random=12" alt="Эксклюзив" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-graphite-dark/90 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+                        <h3 class="font-serif text-lg md:text-xl font-bold text-white tracking-wide group-hover:text-metallic transition-colors">Эксклюзив</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- PRODUCTS #2 (Made to Order / Exclusives) -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div class="mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-2">На заказ</h2>
+                    <div class="h-0.5 w-16 bg-metallic mx-auto md:mx-0"></div>
+                </div>
+                <a href="#custom-products" class="text-text hover:text-metallic transition-colors text-sm font-medium uppercase tracking-widest flex items-center gap-2 mx-auto md:mx-0">
+                    Узнать подробнее
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+
+            <!-- Grid: 2 mobile, 3 tablet, 6 desktop -->
+            <div class="grid grid-cols-2 lg:grid-cols-6 gap-x-4 gap-y-8 md:gap-6">
+                <!-- Product 1 -->
+                <div class="group flex flex-col">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=19" alt="Перстень Лес" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Перстень "Лес"</a>
+                    <p class="text-text-muted text-xs mb-2">Гравировка, чернение</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 7 500 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="group flex flex-col">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=20" alt="Кольцо Орбита" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Кольцо "Орбита"</a>
+                    <p class="text-text-muted text-xs mb-2">Абстракция, 925 проба</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 5 900 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="group flex flex-col hidden md:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=21" alt="Печатка Герб" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Печатка "Герб"</a>
+                    <p class="text-text-muted text-xs mb-2">Индивидуальный эскиз</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 8 200 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="group flex flex-col hidden md:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=22" alt="Парные кольца" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-2 left-2 bg-metallic text-graphite-dark text-[10px] uppercase font-bold px-2 py-1 tracking-wider">Свадебные</div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Парные "Слияние"</a>
+                    <p class="text-text-muted text-xs mb-2">Набор из двух колец</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 9 500 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+                <!-- Product 5 -->
+                <div class="group flex flex-col hidden lg:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=23" alt="Широкое кольцо" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Широкое кольцо</a>
+                    <p class="text-text-muted text-xs mb-2">Гранж, с чеканкой</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 6 200 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+                <!-- Product 6 -->
+                <div class="group flex flex-col hidden lg:flex">
+                    <div class="relative bg-graphite-light aspect-square mb-4 overflow-hidden">
+                        <img src="https://picsum.photos/400/400?random=24" alt="Тонкое кольцо" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-graphite-dark/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <button class="absolute top-2 right-2 text-text hover:text-metallic transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg></button>
+                    </div>
+                    <a href="#" class="font-medium text-white hover:text-metallic transition-colors text-sm md:text-base truncate">Тонкая геометрия</a>
+                    <p class="text-text-muted text-xs mb-2">Подгонка по размеру</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="font-serif text-lg text-white">от 4 100 ₽</span>
+                        <button class="bg-transparent border border-metallic text-metallic hover:bg-metallic hover:text-graphite-dark px-3 py-1 text-xs uppercase font-medium transition-colors">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADVANTAGES -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
+                <!-- Adv 1 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Ручная работа</h4>
+                    <p class="text-xs text-text-muted">Каждый этап создания выполняется вручную</p>
+                </div>
+                <!-- Adv 2 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Серебро 925</h4>
+                    <p class="text-xs text-text-muted">Используем только качественные материалы</p>
+                </div>
+                <!-- Adv 3 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Индивидуально</h4>
+                    <p class="text-xs text-text-muted">Подбор размера под ваши параметры</p>
+                </div>
+                <!-- Adv 4 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Гравировка</h4>
+                    <p class="text-xs text-text-muted">Нанесение любых надписей и символов</p>
+                </div>
+                <!-- Adv 5 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Гарантия</h4>
+                    <p class="text-xs text-text-muted">Бесплатный ремонт и чистка</p>
+                </div>
+                <!-- Adv 6 -->
+                <div class="flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 md:w-16 md:h-16 rounded-full border border-metallic/30 flex items-center justify-center mb-4 group-hover:border-metallic group-hover:bg-metallic/10 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-metallic" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                    </div>
+                    <h4 class="font-bold text-white text-sm mb-2">Упаковка</h4>
+                    <p class="text-xs text-text-muted">Коробочка и льняной мешочек в подарок</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OFFERS / NEWSLETTER -->
+        <section class="max-w-[1440px] mx-auto px-4 md:px-8 mt-16 md:mt-24">
+            <div class="bg-graphite-light border border-graphite-light p-6 md:p-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-metallic/5 to-transparent"></div>
+                <div class="relative z-10 flex flex-col lg:flex-row gap-12 justify-between items-center">
+
+                    <!-- Text Side -->
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-4">Привилегии для своих</h2>
+                        <p class="text-text-muted text-sm md:text-base mb-6 max-w-md mx-auto lg:mx-0">
+                            Подпишитесь на нашу рассылку, чтобы получить <span class="text-white font-bold">–5% на первый заказ</span>.
+                            А при заказе от 20 000 ₽ мы подарим вам одно кольцо на выбор.
+                        </p>
+                        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
+                            <input type="email" placeholder="Ваш E-mail" class="bg-graphite-dark border border-graphite-dark px-4 py-3 text-sm text-white focus:outline-none focus:border-metallic flex-grow" required>
+                            <button type="submit" class="bg-metallic text-graphite-dark px-6 py-3 font-semibold uppercase tracking-wider text-xs md:text-sm hover:bg-metallic-hover transition-colors whitespace-nowrap">Подписаться</button>
+                        </form>
+                        <p class="text-[10px] text-text-muted mt-3">Нажимая кнопку, вы соглашаетесь с Политикой конфиденциальности.</p>
+                    </div>
+
+                    <!-- Loyalty Side -->
+                    <div class="lg:w-5/12 bg-graphite-dark p-6 md:p-8 w-full border border-metallic/20 relative">
+                        <div class="absolute -top-3 -right-3 bg-metallic w-12 h-12 rounded-full flex items-center justify-center transform rotate-12">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-graphite-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-4">Программа лояльности</h3>
+                        <ul class="flex flex-col gap-3">
+                            <li class="flex gap-3 items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-metallic shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span class="text-sm text-text-muted">Со второго заказа – доступ к новинкам на сутки раньше.</span>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-metallic shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span class="text-sm text-text-muted">Начисление бонусов (кэшбэк) с каждой покупки.</span>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-metallic shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                                <span class="text-sm text-text-muted">Секретные распродажи только для постоянных клиентов.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="max-w-[800px] mx-auto px-4 md:px-8 mt-16 md:mt-24 mb-16" id="faq">
+            <div class="mb-10 text-center">
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-white mb-2">Частые вопросы</h2>
+                <div class="h-0.5 w-16 bg-metallic mx-auto"></div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-graphite-light bg-graphite-light overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-left hover:bg-graphite transition-colors focus:outline-none">
+                        <span class="font-bold text-white text-sm md:text-base">Как узнать свой размер кольца?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 text-metallic transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="text-text-muted text-sm pb-4">
+                            Самый надежный способ — зайти в любой ближайший ювелирный магазин и попросить измерить палец пальцемером.
+                            Также вы можете измерить внутренний диаметр вашего удобного кольца линейкой (в миллиметрах). Например, 17 мм = 17 размер.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-graphite-light bg-graphite-light overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-left hover:bg-graphite transition-colors focus:outline-none">
+                        <span class="font-bold text-white text-sm md:text-base">Сколько времени занимает изготовление на заказ?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 text-metallic transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="text-text-muted text-sm pb-4">
+                            В среднем создание индивидуального кольца с нуля занимает от 10 до 14 рабочих дней, в зависимости от сложности эскиза и загруженности мастерской.
+                            Точные сроки мы озвучиваем при согласовании заказа.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-graphite-light bg-graphite-light overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-4 flex justify-between items-center text-left hover:bg-graphite transition-colors focus:outline-none">
+                        <span class="font-bold text-white text-sm md:text-base">Можно ли вернуть или обменять украшение?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="faq-icon h-5 w-5 text-metallic transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                        <p class="text-text-muted text-sm pb-4">
+                            Да, вы можете вернуть или обменять готовое изделие в течение 14 дней с момента получения, при условии сохранения товарного вида.
+                            Исключение составляют кольца, изготовленные по индивидуальному заказу или с персональной гравировкой (согласно законодательству РФ).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-graphite-dark border-t border-graphite-light pt-12 pb-6 mt-16">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 text-center md:text-left">
+                <!-- Brand & Zen -->
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <span class="font-serif text-2xl font-bold tracking-widest text-white">ГРАНЬ</span>
+                    <p class="text-text-muted text-sm">Серебро, сделанное руками.</p>
+                    <a href="#zen" class="mt-2 inline-flex items-center gap-2 text-metallic hover:text-metallic-hover transition-colors text-sm font-medium">
+                        Читайте наши истории на Дзене
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="text-white font-medium uppercase tracking-wider text-sm mb-2">Навигация</h4>
+                    <a href="#catalog" class="text-text-muted hover:text-metallic transition-colors text-sm">Каталог</a>
+                    <a href="#custom" class="text-text-muted hover:text-metallic transition-colors text-sm">На заказ</a>
+                    <a href="#about" class="text-text-muted hover:text-metallic transition-colors text-sm">О мастерской</a>
+                    <a href="#faq" class="text-text-muted hover:text-metallic transition-colors text-sm">Вопросы и ответы</a>
+                </div>
+
+                <!-- Info -->
+                <div class="flex flex-col gap-3">
+                    <h4 class="text-white font-medium uppercase tracking-wider text-sm mb-2">Покупателям</h4>
+                    <a href="#" class="text-text-muted hover:text-metallic transition-colors text-sm">Оплата и доставка</a>
+                    <a href="#" class="text-text-muted hover:text-metallic transition-colors text-sm">Обмен и возврат</a>
+                    <a href="#" class="text-text-muted hover:text-metallic transition-colors text-sm">Уход за серебром</a>
+                    <a href="#" class="text-text-muted hover:text-metallic transition-colors text-sm">Оферта</a>
+                </div>
+
+                <!-- Contacts & Socials -->
+                <div class="flex flex-col items-center md:items-start gap-3">
+                    <h4 class="text-white font-medium uppercase tracking-wider text-sm mb-2">Контакты</h4>
+                    <a href="mailto:hello@gran-silver.ru" class="text-text-muted hover:text-metallic transition-colors text-sm">hello@gran-silver.ru</a>
+                    <div class="flex gap-4 mt-2">
+                        <!-- VK Icon -->
+                        <a href="#" class="text-text-muted hover:text-metallic transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M21.144 9.176c.11-.351.018-.738-.255-.989-.272-.251-.676-.328-1.025-.195l-14 5.385c-.322.124-.537.433-.537.777s.215.653.537.777l4.025 1.548 1.487 4.707c.077.242.274.423.522.482.247.06.512-.01.696-.183l2.846-2.658 3.86 2.96c.219.167.514.2.766.084.253-.115.421-.356.435-.632l1.642-12.064zm-14.876 5.86l9.31-7.142-7.854 8.04-1.456-1.098zM9.5 19.38v-3.79l1.624 1.246-1.624 2.544z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <!-- Telegram Icon -->
+                        <a href="#" class="text-text-muted hover:text-metallic transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-graphite pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-text-muted">
+                <p>&copy; 2024 Мастерская «ГРАНЬ». Все права защищены.</p>
+                <div class="mt-4 md:mt-0 flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">Политика конфиденциальности</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating max-height
+                setTimeout(() => {
+                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
+                }, 10);
+            } else {
+                mobileMenu.style.maxHeight = "0px";
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300); // match transition duration
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) toggleMenu();
+            });
+        });
+
+        // Sliders Functionality
+        function initSlider(sliderId, hasDots = false) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+
+            const track = slider.querySelector('.slider-track');
+            const slides = slider.querySelectorAll('.slide');
+            const prevBtn = slider.querySelector('.slider-prev');
+            const nextBtn = slider.querySelector('.slider-next');
+            const dotsContainer = slider.querySelector('.slider-dots');
+
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let autoSlideInterval;
+
+            function updateSlider() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if (hasDots && dotsContainer) {
+                    const dots = dotsContainer.querySelectorAll('button');
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('bg-metallic', 'w-6');
+                            dot.classList.remove('bg-white/50', 'w-2');
+                        } else {
+                            dot.classList.remove('bg-metallic', 'w-6');
+                            dot.classList.add('bg-white/50', 'w-2');
+                        }
+                    });
+                }
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider();
+            }
+
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            }
+
+            if (hasDots && dotsContainer) {
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-metallic w-6' : 'bg-white/50 w-2'}`;
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateSlider();
+                        resetAutoSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoSlide();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoSlide();
+            });
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000); // 5 seconds per slide
+            }
+
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                startAutoSlide();
+            }
+
+            startAutoSlide();
+        }
+
+        initSlider('hero-slider', true);
+        initSlider('process-slider', false);
+
+        // FAQ Accordion Functionality
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('.faq-icon');
+
+                // Toggle open/close
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.classList.remove('-rotate-180');
+                    btn.classList.remove('text-metallic');
+                } else {
+                    // Close all others
+                    document.querySelectorAll('.faq-content').forEach(el => {
+                        el.style.maxHeight = null;
+                    });
+                    document.querySelectorAll('.faq-icon').forEach(el => {
+                        el.classList.remove('-rotate-180');
+                    });
+                    document.querySelectorAll('.faq-btn').forEach(el => {
+                        el.classList.remove('text-metallic');
+                    });
+
+                    // Open current
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('-rotate-180');
+                    btn.classList.add('text-metallic');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
