@@ -388,8 +388,11 @@
                         <p class="text-text-muted text-sm md:text-base leading-relaxed mb-6">
                             Мы — маленькая мастерская, где каждое кольцо рождается вручную. Льём, куём, шлифуем — и вкладываем душу. Никакого конвейера, только индивидуальный подход.
                         </p>
-                        <p class="text-text-muted text-sm md:text-base leading-relaxed mb-8">
+                        <p class="text-text-muted text-sm md:text-base leading-relaxed mb-6">
                             Наши украшения не про идеальный ювелирный лоск, они про характер, текстуры и уникальность. Каждая грань хранит тепло рук мастера.
+                        </p>
+                        <p class="text-text-muted text-sm md:text-base leading-relaxed mb-8">
+                            Читайте истории создания и секреты нашего ремесла в <a href="#" target="_blank" class="text-metallic hover:text-white underline decoration-metallic/50 underline-offset-4 transition-colors">нашем блоге на Дзене</a>.
                         </p>
                         <a href="#custom" class="inline-block bg-metallic text-graphite-900 px-8 py-4 text-sm font-bold uppercase tracking-wider hover:bg-metallic-hover transition-colors rounded-sm">
                             Заказать индивидуально
@@ -533,14 +536,10 @@
                                 <span class="bg-graphite-900/80 text-white text-[10px] uppercase tracking-wider px-2 py-1 backdrop-blur-sm border border-white/10">Новинка</span>
                             </div>
 
-                            <!-- Hover Add to Cart (Desktop) -->
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 to-transparent hidden md:block">
-                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
+                            <!-- Universal Add to Cart Overlay -->
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-full md:group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
                             </div>
-                            <!-- Mobile Quick Add -->
-                            <button class="md:hidden absolute bottom-2 right-2 w-10 h-10 bg-metallic rounded-full flex items-center justify-center text-graphite-900 shadow-lg">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                            </button>
                         </div>
                         <div class="text-center md:text-left">
                             <h3 class="text-white font-serif text-lg mb-1 group-hover:text-metallic transition-colors">Подвеска "Лес"</h3>
@@ -554,12 +553,9 @@
                         <div class="relative aspect-[3/4] bg-graphite-800 mb-4 overflow-hidden rounded-sm">
                             <img src="https://picsum.photos/id/113/300/400" alt="Кольцо 'Спираль'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 to-transparent hidden md:block">
-                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-full md:group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
                             </div>
-                            <button class="md:hidden absolute bottom-2 right-2 w-10 h-10 bg-metallic rounded-full flex items-center justify-center text-graphite-900 shadow-lg">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                            </button>
                         </div>
                         <div class="text-center md:text-left">
                             <h3 class="text-white font-serif text-lg mb-1 group-hover:text-metallic transition-colors">Кольцо "Спираль"</h3>
@@ -573,8 +569,8 @@
                         <div class="relative aspect-[3/4] bg-graphite-800 mb-4 overflow-hidden rounded-sm">
                             <img src="https://picsum.photos/id/114/300/400" alt="Серьги 'Капли'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 to-transparent hidden md:block">
-                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-full md:group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
                             </div>
                         </div>
                         <div class="text-center md:text-left">
@@ -589,8 +585,8 @@
                         <div class="relative aspect-[3/4] bg-graphite-800 mb-4 overflow-hidden rounded-sm">
                             <img src="https://picsum.photos/id/115/300/400" alt="Браслет 'Цепь'" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
                             <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
-                            <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 to-transparent hidden md:block">
-                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
+                            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 md:translate-y-full md:group-hover:translate-y-0 transition-all duration-300 ease-out">
+                                <button class="w-full bg-metallic text-graphite-900 py-2.5 text-xs md:text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors">В корзину</button>
                             </div>
                         </div>
                         <div class="text-center md:text-left">
@@ -613,7 +609,7 @@
         <!-- Advantages Block -->
         <section class="py-16 md:py-20 border-t border-white/10 bg-graphite-900/50">
             <div class="container-custom">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
 
                     <!-- Advantage 1 -->
                     <div class="flex flex-col items-center">
@@ -629,11 +625,29 @@
                         <div class="w-12 h-12 mb-4 text-metallic">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h4 class="font-serif text-white mb-2 text-sm md:text-base">Сроки 1-3 дня</h4>
-                        <p class="text-xs text-gray-400 font-sans max-w-[150px]">Быстрое изготовление и доставка</p>
+                        <h4 class="font-serif text-white mb-2 text-sm md:text-base">Серебро 925</h4>
+                        <p class="text-xs text-gray-400 font-sans max-w-[150px]">Используем только качественное стерлинговое серебро</p>
                     </div>
 
                     <!-- Advantage 3 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 mb-4 text-metallic">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-white mb-2 text-sm md:text-base">Индивидуально</h4>
+                        <p class="text-xs text-gray-400 font-sans max-w-[150px]">Изготовим по вашим эскизам или фото</p>
+                    </div>
+
+                    <!-- Advantage 4 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-12 h-12 mb-4 text-metallic">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                        </div>
+                        <h4 class="font-serif text-white mb-2 text-sm md:text-base">Гравировка</h4>
+                        <p class="text-xs text-gray-400 font-sans max-w-[150px]">Бесплатная гравировка на внутренней стороне</p>
+                    </div>
+
+                    <!-- Advantage 5 -->
                     <div class="flex flex-col items-center">
                         <div class="w-12 h-12 mb-4 text-metallic">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
@@ -642,7 +656,7 @@
                         <p class="text-xs text-gray-400 font-sans max-w-[150px]">Пожизненная гарантия на наши украшения</p>
                     </div>
 
-                    <!-- Advantage 4 -->
+                    <!-- Advantage 6 -->
                     <div class="flex flex-col items-center">
                         <div class="w-12 h-12 mb-4 text-metallic">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
@@ -719,27 +733,50 @@
             </div>
         </section>
 
-        <!-- Special Offer Banner -->
+        <!-- Special Offers Section -->
         <section class="py-16 md:py-24">
             <div class="container-custom">
-                <div class="relative bg-graphite-800 rounded-sm overflow-hidden flex flex-col md:flex-row items-center">
-                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                <div class="text-center mb-12">
+                    <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Наши акции и бонусы</h2>
+                    <div class="w-16 h-0.5 bg-metallic mx-auto"></div>
+                </div>
 
-                    <div class="w-full md:w-1/2 p-8 md:p-16 relative z-10 text-center md:text-left">
-                        <span class="inline-block px-3 py-1 bg-metallic/10 text-metallic text-xs uppercase tracking-widest font-semibold mb-4 border border-metallic/30">Специальное предложение</span>
-                        <h2 class="font-serif text-2xl md:text-4xl text-white mb-4">Скидка 5% на первый заказ</h2>
-                        <p class="text-gray-400 mb-8 font-sans leading-relaxed">Подпишитесь на нашу рассылку, чтобы получить промокод, а также первыми узнавать о новинках и закрытых распродажах.</p>
-
-                        <form class="flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="Ваш Email" class="w-full bg-graphite-900 border border-white/20 px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-metallic transition-colors font-sans">
-                            <button type="submit" class="bg-metallic text-graphite-900 px-8 py-3 font-semibold uppercase tracking-wider hover:bg-white transition-colors whitespace-nowrap">Получить скидку</button>
-                        </form>
-                        <p class="text-[10px] text-gray-500 mt-3 font-sans">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <!-- Offer 1 -->
+                    <div class="bg-graphite-800 p-8 rounded-sm text-center border border-white/5 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-metallic/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                        <h3 class="font-serif text-2xl text-white mb-2">–5% на первый заказ</h3>
+                        <p class="text-gray-400 text-sm font-sans">Дарим скидку на ваше первое украшение при подписке на новости.</p>
                     </div>
 
-                    <div class="w-full md:w-1/2 relative min-h-[300px] md:min-h-[400px]">
-                        <img src="https://picsum.photos/id/116/800/600" alt="Подарочная упаковка" class="absolute inset-0 w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-graphite-800"></div>
+                    <!-- Offer 2 -->
+                    <div class="bg-graphite-800 p-8 rounded-sm text-center border border-white/5 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-metallic/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Подарок от 20 000 ₽</h3>
+                        <p class="text-gray-400 text-sm font-sans">При заказе от 20 000 ₽ вы получаете серебряный кулон в подарок.</p>
+                    </div>
+
+                    <!-- Offer 3 -->
+                    <div class="bg-graphite-800 p-8 rounded-sm text-center border border-white/5 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-metallic/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform group-hover:scale-150"></div>
+                        <h3 class="font-serif text-2xl text-white mb-2">Программа лояльности</h3>
+                        <p class="text-gray-400 text-sm font-sans">Накапливайте бонусы с каждой покупки и получайте доступ к новинкам раньше всех.</p>
+                    </div>
+                </div>
+
+                <!-- Email Subscription -->
+                <div class="relative bg-graphite-800 rounded-sm overflow-hidden flex flex-col md:flex-row items-center max-w-4xl mx-auto">
+                    <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+
+                    <div class="w-full md:w-2/3 p-8 md:p-12 relative z-10 text-center md:text-left">
+                        <h3 class="font-serif text-xl md:text-2xl text-white mb-2">Получить скидку 5%</h3>
+                        <p class="text-gray-400 text-sm mb-6 font-sans">Оставьте свой email, и мы пришлем вам промокод на первый заказ.</p>
+
+                        <form class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Ваш Email" class="w-full bg-graphite-900 border border-white/20 px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-metallic transition-colors font-sans text-sm">
+                            <button type="submit" class="bg-metallic text-graphite-900 px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors whitespace-nowrap">Отправить</button>
+                        </form>
+                        <p class="text-[10px] text-gray-500 mt-2 font-sans">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
                     </div>
                 </div>
             </div>
@@ -754,7 +791,7 @@
 
                 <!-- Brand & Description -->
                 <div class="md:col-span-1">
-                    <a href="#" class="font-serif text-2xl text-white tracking-widest uppercase inline-block mb-4">Silver<span class="text-metallic">Craft</span></a>
+                    <a href="#" class="font-serif text-2xl text-white tracking-widest uppercase inline-block mb-4">ГРАНЬ</a>
                     <p class="text-sm text-gray-400 font-sans mb-6 leading-relaxed">
                         Студия авторских ювелирных украшений из серебра. Ручная работа, уникальный дизайн и внимание к деталям.
                     </p>
@@ -820,7 +857,7 @@
             </div>
 
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-sans">
-                <p>&copy; 2024 SilverCraft. Все права защищены.</p>
+                <p>&copy; 2024 ГРАНЬ. Все права защищены.</p>
                 <div class="flex gap-4">
                     <a href="#" class="hover:text-metallic transition-colors">Политика конфиденциальности</a>
                     <a href="#" class="hover:text-metallic transition-colors">Публичная оферта</a>
@@ -836,6 +873,14 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
 
         // Sticky Header Blur Effect on Scroll
@@ -922,6 +967,29 @@
 
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            // Touch Swipe Support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide(); // Swiped left
+                }
+                if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide(); // Swiped right
+                }
+            }
 
             startAutoPlay();
         }
